@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="macros_robot">
+  <!-- ************************ -->
+  <!--   INCLUDE xacro. FILES   -->
+  <!-- ************************ -->
+  <xacro:include filename="$(find r2d2_rx_description)/urdf/macros_basico.xacro"/>
+
+
+  <!-- ***************************** -->
+  <!--   MACRO TO CREATE THE ROBOT   -->
+  <!-- ***************************** -->
+  <xacro:macro name="robot" params="prefix">
+    <!-- ******************* -->
+    <!--  SET THE BASE LINK  -->
+    <!-- ******************* -->
+    <link name="${prefix}base_link">
+        <xacro:rectangular_body mass="${m_link}" material="white"
+                                xx="${xx}" yy="${yy}" zz="${zz}"
+                                origin_z="${zz/2}"/>
+    </link>
+
+    <!-- ***************************** -->
+    <!--  ADD "wheel1" TO "base_link"  -->
+    <!-- ***************************** -->
+    <link name="${prefix}wheel_1">
+      <xacro:wheel mass="${m_wheel}" r="${r}" h="${h}" material="black"/>
+    </link>
+    <joint name="${prefix}base_to_wheel1" type="continuous">
+      <parent link="${prefix}base_link"/>
+      <child  link="${prefix}wheel_1"/>
+      <origin rpy="${-PI/2} 0 0" xyz="${wheel_distance} ${(yy + h)/2}  0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <!-- ***************************** -->
+    <!--  ADD "wheel2" TO "base_link"  -->
+    <!-- ***************************** -->
+    <link name="${prefix}wheel_2">
+      <xacro:wheel mass="${m_wheel}" r="${r}" h="${h}" material="black"/>
+    </link>
+    <joint name="${prefix}base_to_wheel2" type="continuous">
+      <parent link="${prefix}base_link"/>
+      <child  link="${prefix}wheel_2"/>
+      <origin rpy="${-PI/2} 0 0" xyz="${wheel_distance}  ${-(yy + h)/2} 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <!-- ***************************** -->
+    <!--  ADD "wheel3" TO "base_link"  -->
+    <!-- ***************************** -->
+    <link name="${prefix}wheel_3">
+      <xacro:wheel mass="${m_wheel}" r="${r}" h="${h}" material="black"/>
+    </link>
+    <joint name="${prefix}base_to_wheel3" type="continuous">
+      <parent link="${prefix}base_link"/>
+      <child  link="${prefix}wheel_3"/>
+      <origin rpy="${-PI/2} 0 0" xyz="${-wheel_distance}  ${(yy + h)/2}  0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <!-- ***************************** -->
+    <!--  ADD "wheel4" TO "base_link"  -->
+    <!-- ***************************** -->
+    <link name="${prefix}wheel_4">
+      <xacro:wheel mass="${m_wheel}" r="${r}" h="${h}" material="black"/>
+    </link>
+    <joint name="${prefix}base_to_wheel4" type="continuous">
+      <parent link="${prefix}base_link"/>
+      <child  link="${prefix}wheel_4"/>
+      <origin rpy="${-PI/2} 0 0" xyz="${-wheel_distance}  ${-(yy + h)/2}   0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+
+    <!-- ************************ -->
+    <!--  ADD LASER (i.e hokuyo)  -->
+    <!-- ************************ -->
+    <!-- Set joint -->
+    <joint name="${prefix}laser_joint" type="fixed">
+      <origin rpy="0 0 ${0*PI/2}" xyz="0.1 0.0 ${zz + 0.07/2}"/>
+      <parent link="${prefix}base_link"/>
+      <child  link="${prefix}laser_link"/>
+    </joint>
+    <!-- Set body -->
+    <link name="${prefix}laser_link">
+      <!-- Visual properties -->
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename ="file://$(find r2d2_rx_description)/meshes/hokuyo.dae"/>
+        </geometry>
+      </visual>
+      <!-- Collision properties for gazebo -->
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.07 0.07 0.07"/>
+        </geometry>
+      </collision>
+      <!-- Inertial properties for gazebo -->
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+      </inertial>
+    </link>
+    <!-- SET ADDITIONAL LINK IN ORDER TO DISPLAY LASER MESSAGES IN RVIZ -->
+    <joint name="${prefix}laser_gz" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0 "/>
+      <parent link="${prefix}laser_link"/>
+      <child  link="${prefix}robot/${prefix}base_link/${prefix}laser_sensor"/>
+    </joint>
+    <link name="${prefix}robot/${prefix}base_link/${prefix}laser_sensor">
+    </link>
+
+    <!-- ********* -->
+    <!--  ADD IMU  -->
+    <!-- ********* -->
+    <!-- Set joint -->
+    <joint name="${prefix}imu_joint" type="fixed">
+      <origin rpy="0 0 ${0*PI/2}" xyz="-0.1 0.0 ${zz + 0.05/2}"/>
+      <parent link="${prefix}base_link"/>
+      <child  link="${prefix}imu_link"/>
+    </joint>
+    <!-- Set body -->
+    <link name="${prefix}imu_link">
+      <!-- Visual properties -->
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.05 0.05 0.05"/>
+        </geometry>
+        <material name="red"/>
+      </visual>
+      <!-- Collision properties for gazebo -->
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.05 0.05 0.05"/>
+        </geometry>
+      </collision>
+      <!-- Inertial properties for gazebo -->
+      <inertial>
+        <mass value="0.05" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+      </inertial>
+    </link>
+    <!-- SET ADDITIONAL LINK IN ORDER TO DISPLAY MESSAGES IN RVIZ -->
+    <joint name="${prefix}imu_gz" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0 "/>
+      <parent link="${prefix}imu_link"/>
+      <child  link="${prefix}robot/${prefix}base_link/${prefix}imu_sensor"/>
+    </joint>
+    <link name="${prefix}robot/${prefix}base_link/${prefix}imu_sensor">
+    </link>
+
+    <!-- ********* -->
+    <!--  ADD GPS  -->
+    <!-- ********* -->
+    <!-- Set joint -->
+    <joint name="${prefix}gps_joint" type="fixed">
+      <origin rpy="0 0 ${0*PI/2}" xyz="0.0 0.0 ${zz + 0.05/2}"/>
+      <parent link="${prefix}base_link"/>
+      <child  link="${prefix}gps_link"/>
+    </joint>
+    <!-- Set body -->
+    <link name="${prefix}gps_link">
+      <!-- Visual properties -->
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.05 0.05 0.05"/>
+        </geometry>
+        <material name="green"/>
+      </visual>
+      <!-- Collision properties for gazebo -->
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.05 0.05 0.05"/>
+        </geometry>
+      </collision>
+      <!-- Inertial properties for gazebo -->
+      <inertial>
+        <mass value="0.05" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+      </inertial>
+    </link>
+    <!-- SET ADDITIONAL LINK IN ORDER TO DISPLAY MESSAGES IN RVIZ -->
+    <joint name="${prefix}gps_gz" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0 "/>
+      <parent link="${prefix}gps_link"/>
+      <child  link="${prefix}robot/${prefix}base_link/${prefix}gps_sensor"/>
+    </joint>
+    <link name="${prefix}robot/${prefix}base_link/${prefix}gps_sensor">
+    </link>
+
+    <!-- ************ -->
+    <!--  ADD CAMERA  -->
+    <!-- ************ -->
+    <!-- Set joint -->
+    <joint name="${prefix}camera" type="fixed">
+      <origin rpy="0 0 ${0*PI/2}" xyz="0.0 0.1 ${zz + 0.05/2 + 0.2}"/>
+      <parent link="${prefix}base_link"/>
+      <child  link="${prefix}camera_link"/>
+    </joint>
+    <!-- Set body -->
+    <link name="${prefix}camera_link">
+      <!-- Visual properties -->
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.05 0.05 0.05"/>
+        </geometry>
+        <material name="black"/>
+      </visual>
+      <!-- Collision properties for gazebo -->
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.05 0.05 0.05"/>
+        </geometry>
+      </collision>
+      <!-- Inertial properties for gazebo -->
+      <inertial>
+        <mass value="0.05" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+      </inertial>
+    </link>
+  </xacro:macro>
+
+</robot>

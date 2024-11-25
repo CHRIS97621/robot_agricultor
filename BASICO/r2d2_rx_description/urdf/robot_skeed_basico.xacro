@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_skeed_06_r1">
+  <!-- ***************** -->
+  <!--   SET CONSTANTS   -->
+  <!-- ***************** -->
+  <!-- Parameters of the wheel length/height=h and radius=r -->
+  <xacro:property name="h" value="0.04" />
+  <xacro:property name="r" value="0.05" />
+  <!-- Ubicacion of the wheel wrt base_link -->
+  <xacro:property name="wheel_distance" value="0.10" />
+  <!-- Parameters of the base_link-->
+  <xacro:property name="xx" value="0.30" />
+  <xacro:property name="yy" value="0.20" />
+  <xacro:property name="zz" value="0.10" />
+  <!-- Mass of the objects -->
+  <xacro:property name="m_link"  value="2.0" />
+  <xacro:property name="m_wheel" value="0.2" />
+  <!-- Math constants -->
+  <xacro:property name="PI" value="3.14159265359" />
+  <xacro:property name="prefix" value="r1_"/>
+
+  <!-- ************************ -->
+  <!--   INCLUDE xacro. FILES   -->
+  <!-- ************************ -->
+  <xacro:include filename="$(find r2d2_rx_description)/urdf/macros_robot.xacro" />
+  <xacro:include filename="$(find r2d2_rx_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find r2d2_rx_description)/urdf/macros_gazebo.xacro" />
+
+  <!-- ********************* -->
+  <!--    CREATE THE ROBOT   -->
+  <!-- ********************* -->
+  <xacro:robot prefix="${prefix}" >
+  </xacro:robot>
+  <xacro:set_gazebo prefix="${prefix}" >
+  </xacro:set_gazebo>
+</robot>

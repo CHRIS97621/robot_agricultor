@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<launch>
+  <group>
+    <!-- Set namespace for all nodes in the group -->
+    <push-ros-namespace namespace="ivan"/>
+    <!-- Launch a turtlesim_node -->
+    <node
+      name = "turtle"
+      pkg  = "turtlesim"
+      exec = "turtlesim_node" >
+    </node>
+    <!-- Launch a turtle_teleop_key node -->
+    <node
+      name = "teleop"
+      pkg  = "turtlesim"
+      exec = "turtle_teleop_key" 
+      output = "screen"
+      launch-prefix = "xterm -e" >
+    </node>
+  </group>
+
+  <group>
+    <!-- Launch a turtlesim_node -->
+    <node
+      name = "turtle"
+      pkg  = "turtlesim"
+      exec = "turtlesim_node" >
+    </node>
+    <!-- Launch a turtle_teleop_key node -->
+    <node
+      name = "teleop"
+      pkg  = "turtlesim"
+      exec = "turtle_teleop_key" 
+      output = "screen"
+      launch-prefix = "xterm -e" >
+    </node>
+  </group>
+
+  <!-- Launch rqt_graph -->
+  <node
+    name = "rqt_graph"
+    pkg  = "rqt_graph"
+    exec = "rqt_graph" >
+  </node>
+</launch>

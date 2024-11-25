@@ -1,0 +1,8 @@
+/robot:
+  ros__parameters:
+    odom_frequency: 10
+    port_md: /dev/ttyACM2
+    type_robot: R2D2-02
+    gains: [5.5, 6.6]
+    enable: True
+

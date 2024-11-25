@@ -1,0 +1,54 @@
+# ekf_imu_gps.yaml - Fusión de IMU y GPS sin odometría
+/ekf_gps_imu2:
+  ros__parameters:
+    frequency: 30.0  # Frecuencia de actualización del filtro EKF en Hz
+    sensor_timeout: 0.1  # Tiempo de espera antes de que el sensor se considere fallido
+    two_d_mode: true  # Si se trata de un robot terrestre, solo trabajamos en 2D
+    transform_time_offset: 0.0
+    transform_timeout: 0.0
+    print_diagnostics: true  # Diagnóstico de estado del EKF
+    debug: false  # Si quieres activar el modo debug, cámbialo a true
+
+    map_frame: map  # Marco de referencia global
+    odom_frame: odom  # Marco local, aunque no se use odometría, se puede requerir el frame
+    base_link_frame: base_link  # El marco base del robot
+    world_frame: map  # El marco global donde se ubican los datos de GPS
+    publish_tf: true # Publicar las transformaciones
+
+    # Configuración del IMU
+    imu0: /imu/data  # Tópico del IMU
+    imu0_config: [false, false, false,   # X, Y, Z (no usamos la posición de la IMU)
+                  true, true, true,      # Roll, Pitch, Yaw (orientación de la IMU)
+                  false, false, false,   # Velocidades lineales no usadas
+                  true, true, true,      # Velocidades angulares Roll, Pitch, Yaw
+                  true, true, true,      # Aceleraciones lineales (X, Y, Z)
+                  false, false, false]   # Aceleraciones angulares no usadas
+    imu0_differential: true  # Utilizar velocidades angulares diferenciales
+    imu0_remove_gravitational_acceleration: true  # Eliminar la aceleración gravitacional
+
+    # Configuración del GPS
+    gps0: /gps/fix  # Tópico de datos del GPS
+    gps0_config: [true, true, false,    # Usamos solo X y Y, no Z (altitud)
+                  false, false, false,  # No utilizamos orientaciones del GPS
+                  false, false, false,  # No utilizamos velocidades del GPS
+                  false, false, false,  # No utilizamos aceleraciones del GPS
+                  false, false, false]  # No utilizamos aceleraciones angulares del GPS
+    gps0_queue_size: 10  # Tamaño del buffer de mensajes del GPS
+
+    use_control: false  # No hay controladores externos que afecten el modelo del robot
+
+    # Covarianza del proceso del EKF
+    process_noise_covariance: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0,  # Incertidumbre en X
+                               0.0, 0.1, 0.0, 0.0, 0.0, 0.0,  # Incertidumbre en Y
+                               0.0, 0.0, 1e-5, 0.0, 0.0, 0.0,  # Alta incertidumbre en Z
+                               0.0, 0.0, 0.0, 0.1, 0.0, 0.0,  # Roll
+                               0.0, 0.0, 0.0, 0.0, 0.1, 0.0,  # Pitch
+                               0.0, 0.0, 0.0, 0.0, 0.0, 0.1]   # Yaw
+
+    # Covarianza inicial del estado estimado (pose inicial del robot)
+    initial_estimate_covariance: [1e-9, 0.0, 0.0, 0.0, 0.0, 0.0,  # Inicialmente confiamos mucho en X
+                                  0.0, 1e-9, 0.0, 0.0, 0.0, 0.0,  # Inicialmente confiamos mucho en Y
+                                  0.0, 0.0, 1e-5, 0.0, 0.0, 0.0,  # Baja confianza en Z (no la usamos)
+                                  0.0, 0.0, 0.0, 1.0, 0.0, 0.0,   # Baja confianza en Roll
+                                  0.0, 0.0, 0.0, 0.0, 1.0, 0.0,   # Baja confianza en Pitch
+                                  0.0, 0.0, 0.0, 0.0, 0.0, 1.0]   # Baja confianza en Yaw

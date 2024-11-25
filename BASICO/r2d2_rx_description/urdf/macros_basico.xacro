@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="macros_basico">
+  <!-- ************************ -->
+  <!--   MACRO TO CREATE BOXES  -->
+  <!-- ************************ -->
+  <!-- Macro to create the wheels -->
+  <xacro:macro  name="rectangular_body"
+                params="mass xx yy zz material
+                        origin_x:=0  origin_y:=0  origin_z:=0">
+    <!-- Visual properties -->
+    <visual>
+      <geometry>
+        <box size="${xx}  ${yy}  ${zz}"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="${origin_x} ${origin_y} ${origin_z}"/>
+      <material name="${material}"/>
+    </visual>
+    <!-- Collision properties for gazebo -->
+    <collision>
+      <geometry>
+        <box size="${xx}  ${yy}  ${zz}"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="${origin_x} ${origin_y} ${origin_z}"/>
+    </collision>
+    <!-- Inertial properties for gazebo -->
+    <inertial>
+      <mass value="${mass}" />
+      <origin rpy="0 0 0" xyz="${origin_x} ${origin_y} ${origin_z}"/>
+      <inertia ixx="${mass*(yy*yy + zz*zz)/12.0}"
+                iyy="${mass*(xx*xx + zz*zz)/12.0}"
+                izz="${mass*(xx*xx + yy*yy)/12.0}"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </xacro:macro>
+
+
+  <!-- ************************* -->
+  <!--   MACRO TO CREATE WHEELS  -->
+  <!-- ************************* -->
+  <!-- Macro to create the wheels -->
+  <xacro:macro name="wheel" params="mass r h material">
+    <!-- Visual properties -->
+    <visual>
+      <geometry>
+        <cylinder length="${h}" radius="${r}"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="${material}"/>
+    </visual>
+    <!-- Collision properties for gazebo -->
+    <collision>
+      <geometry>
+        <cylinder length="${h}" radius="${r}"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+    <!-- Inertial properties for gazebo -->
+    <inertial>
+      <mass value="${mass}" />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="${mass*(3*r*r+h*h)/12.0}"
+                iyy="${mass*(3*r*r+h*h)/12.0}"
+                izz="${mass*(r*r)/2.0}"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </xacro:macro>
+
+
+  <!-- *********************************** -->
+  <!--   MACRO TO CREATE SPHERICAL WHEELS  -->
+  <!-- *********************************** -->
+  <!-- Macro to create the wheels -->
+  <xacro:macro name="spherical_wheel" params="mass r material">
+    <!-- Visual properties -->
+    <visual>
+      <geometry>
+        <sphere radius="${r}"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="${material}"/>
+    </visual>
+    <!-- Collision properties for gazebo -->
+    <collision>
+      <geometry>
+        <sphere radius="${r}"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+    <!-- Inertial properties for gazebo -->
+    <inertial>
+      <mass value="${mass}" />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="${2*(mass*r*r)/5.0}"
+                iyy="${2*(mass*r*r)/5.0}"
+                izz="${2*(mass*r*r)/5.0}"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </xacro:macro>
+
+</robot>

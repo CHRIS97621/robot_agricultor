@@ -1,0 +1,27 @@
+/ekf_imu_gps:
+  ros__parameters:
+    # Marco de referencia
+    #map_frame: map
+    #odom_frame: odom
+    #base_link_frame: base_link
+    #world_frame: map
+
+    #frequency: 30
+    #two_d_mode: true
+    #sensor_timeout: 0.1
+    publish_tf: true
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link
+    world_frame: map
+
+    # Configuración del IMU
+    imu0: /imu/data
+    imu0_config: [false, false, false,   # X, Y, Z (posición)
+                  true, true, true,      # Roll, Pitch, Yaw (orientación)
+                  false, false, false,   # Velocidades angulares (X, Y, Z) - giroscopio
+                  true, true, true,      # Velocidades Roll, Pitch, Yaw
+                  true, true, true,      # Aceleraciones lineales (X, Y, Z) - acelerómetro
+                  false, false, false]   # Aceleraciones Roll, Pitch, Yaw
+
+   

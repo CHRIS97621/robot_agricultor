@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- LAUNCH NODE WITH PARAMETERS -->
+  <node
+    name = "robot"
+    pkg  = "cap_nodos"
+    exec = "params_02.py" 
+    output = "screen">
+      <param name="camera_device_port"          value="/dev/ttyACM5"/>
+      <param name="simulation_mode"             value="False"/>
+      <param name="battery_percentage_warning"  value="90.0" />
+  </node>
+</launch>

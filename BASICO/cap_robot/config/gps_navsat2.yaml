@@ -1,0 +1,16 @@
+# navsat_gps.yaml - Configuración de navsat_transform_node para el GPS
+/gps_navsat2:
+  ros__parameters:
+    frequency: 30.0  # Frecuencia de procesamiento de datos GPS
+    delay: 0.0  # Sin retardo en el procesamiento
+    magnetic_declination_radians: 0.0 # Ajustar según la localización 0.0429351  (declinación magnética local)
+    yaw_offset: 1.570796327  # Desfase de la orientación (1.57 rad equivale a 90 grados)
+    zero_altitude: true  # Ignorar la altitud, ya que es un robot movil
+    broadcast_utm_transform: true  # Publicar la transformación UTM
+    publish_filtered_gps: true  # Publicar el GPS filtrado por el EKF
+    use_odometry_yaw: false  # No estamos usando odometría para la orientación
+    wait_for_datum: false  # No esperar una inicialización específica del GPS
+    base_link_frame: base_link  # Relacionar GPS con base_link
+    map_frame: map  # Publicar las transformaciones hacia el marco map
+    #odom_frame: odom  # El frame de odometría
+    #publish_tf: true  # no publica - sale error

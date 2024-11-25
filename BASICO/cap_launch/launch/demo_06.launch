@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- CONFIGURATION VARIABLES -->
+  <let name="FLAG_RQT" value="0"/>
+  
+  <!-- Include launcher -->
+  <include file = "$(find-pkg-share cap_launch)/launch/demo_01.launch" />
+  
+  <!-- rqt_graph -->
+  <node if="$(var FLAG_RQT)"
+    name = "rqt_graph"
+    pkg  = "rqt_graph"
+    exec = "rqt_graph" >
+  </node>
+</launch>

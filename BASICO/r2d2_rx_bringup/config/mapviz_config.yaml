@@ -1,0 +1,7 @@
+plugins:
+  - name: odometry_plugin
+    topic: /r1_odom
+  - name: gps_plugin
+    topic: /r1_navsat
+  - name: imu_plugin
+    topic: /r1_imu

@@ -1,0 +1,1 @@
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/scripts/subscriber_array.py

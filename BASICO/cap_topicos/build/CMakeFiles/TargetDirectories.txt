@@ -1,0 +1,9 @@
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/CMakeFiles/uninstall.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/CMakeFiles/cap_topicos_uninstall.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/CMakeFiles/test.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/CMakeFiles/edit_cache.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/CMakeFiles/rebuild_cache.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/CMakeFiles/list_install_components.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/CMakeFiles/install.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/CMakeFiles/install/local.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/CMakeFiles/install/strip.dir

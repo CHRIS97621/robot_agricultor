@@ -1,0 +1,51 @@
+# Nodo para fusionar IMU y GPS en el mapa global (map frame)
+/ekf_filter_node_map:
+  ros__parameters:
+    frequency: 30.0  # Frecuencia de actualización del EKF en Hz
+    map_frame: map  # Frame global usado por el GPS
+    odom_frame: odom  # Frame local, necesario para transformaciones
+    base_link_frame: base_link  # Frame base del robot
+    world_frame: map  # El marco global donde opera el GPS
+    publish_tf: true  # Publicar transformaciones tf entre frames
+
+    # Configuración del IMU
+    imu0: /imu/data  # Tópico de la IMU
+    imu0_config: [false, false, false,   # X, Y, Z (posición no se usa)
+                  true, true, true,      # Roll, Pitch, Yaw (orientación)
+                  false, false, false,   # Velocidades lineales (X, Y, Z) - no se usan
+                  true, true, true,      # Velocidades angulares Roll, Pitch, Yaw
+                  true, true, true,      # Aceleraciones lineales (X, Y, Z) - acelerómetro
+                  false, false, false]   # Aceleraciones angulares (no se usan)
+    imu0_differential: true  # Utilizar la velocidad angular diferencial para reducir el drift
+    imu0_remove_gravitational_acceleration: true  # Eliminar la aceleración gravitacional de los datos de la IMU
+    imu0_queue_size: 10  # Tamaño del buffer para los datos de IMU
+
+    # Covarianza del IMU
+    imu0_covariance: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   # Covarianza para Roll (orientación)
+                      0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   # Covarianza para Pitch (orientación)
+                      0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   # Covarianza para Yaw (orientación)
+                      0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0,   # Covarianza para la aceleración lineal X
+                      0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0,   # Covarianza para la aceleración lineal Y
+                      0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0,   # Covarianza para la aceleración lineal Z
+                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0,   # Covarianza para la velocidad angular Roll
+                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0,   # Covarianza para la velocidad angular Pitch
+                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1]   # Covarianza para la velocidad angular Yaw
+
+    # Configuración del GPS
+    gps0: /gps/fix  # Tópico del GPS
+    gps0_config: [true, true, true,      # X, Y, Z (posición)
+                  false, false, false,   # Roll, Pitch, Yaw (no se usan)
+                  false, false, false,   # Velocidades lineales X, Y, Z (no se usan)
+                  false, false, false,   # Velocidades angulares (no se usan)
+                  false, false, false,   # Aceleraciones lineales X, Y, Z (no se usan)
+                  false, false, false]   # Aceleraciones angulares (no se usan)
+    gps0_queue_size: 10  # Tamaño del buffer para los datos de GPS
+
+    # Covarianza del ruido del proceso (modelo del robot)
+    process_noise_covariance: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0,  # Covarianza en X (posición)
+                               0.0, 0.1, 0.0, 0.0, 0.0, 0.0,  # Covarianza en Y (posición)
+                               0.0, 0.0, 0.1, 0.0, 0.0, 0.0,  # Covarianza en Z (posición)
+                               0.0, 0.0, 0.0, 0.1, 0.0, 0.0,  # Covarianza en roll (orientación)
+                               0.0, 0.0, 0.0, 0.0, 0.1, 0.0,  # Covarianza en pitch (orientación)
+                               0.0, 0.0, 0.0, 0.0, 0.0, 0.1]   # Covarianza en yaw (orientación)
+

@@ -1,0 +1,59 @@
+capture_directory: "~"
+fixed_frame: map  # marco principal de tu sistema
+target_frame: map
+fix_orientation: false
+rotate_90: false
+enable_antialiasing: true
+show_displays: true
+show_status_bar: true
+show_capture_tools: true
+window_width: 1920
+window_height: 1016
+view_scale: 0.564473748
+offset_x: -55.0469894
+offset_y: -4.65194941
+use_latest_transforms: true
+background: "#a0a0a4"
+image_transport: raw
+displays:
+  - type: mapviz_plugins/tile_map
+    name: OpenStreetMap
+    config:
+      visible: true
+      collapsed: false
+      custom_sources:
+      - "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      bing_api_key: ""
+      source: Custom
+
+  - type: mapviz_plugins/point_click_publisher
+    name: Click Publisher
+    config:
+      visible: true
+      collapsed: false
+      topic: clicked_point
+      output_frame: wgs84
+      
+  - type: mapviz_plugins/tf_frame
+    name: Robot Frame
+    config:
+      visible: true
+      collapsed: false
+      frame: r1_base_link  # Corregido para coincidir con tu sistema
+      color: "#00ff00"
+      draw_style: arrows
+      position_tolerance: 0
+      buffer_size: 1
+      static_arrow_sizes: true
+      arrow_size: 53
+      
+  - type: mapviz_plugins/navsat
+    name: GPS Fix
+    config:
+      visible: true
+      collapsed: false
+      topic: /r1_navsat  # Corregido para coincidir con el nodo principal
+      color: "#55aaff"
+      draw_style: points
+      position_tolerance: 0
+      buffer_size: 1

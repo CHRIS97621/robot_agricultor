@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- CONFIGURATION VARIABLES -->
+  <let name="FLAG_RQT" value="0"/>
+  <!-- LAUNCH ARGUMENTS -->
+  <arg name = "load_nodes" default = '1' 
+    description="flag para lanzar el turtlesim"/>
+  
+  <!-- Include launcher -->
+  <include if="$(var load_nodes)"
+    file = "$(find-pkg-share cap_launch)/launch/demo_01.launch" 
+  />
+  
+  <!-- rqt_graph -->
+  <node if="$(var FLAG_RQT)"
+    name = "rqt_graph"
+    pkg  = "rqt_graph"
+    exec = "rqt_graph" >
+  </node>
+</launch>

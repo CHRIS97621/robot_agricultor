@@ -1,0 +1,11 @@
+source;share/cap_topicos/hook/cmake_prefix_path.ps1
+source;share/cap_topicos/hook/cmake_prefix_path.dsv
+source;share/cap_topicos/hook/cmake_prefix_path.sh
+source;share/cap_topicos/hook/pythonpath.ps1
+source;share/cap_topicos/hook/pythonpath.dsv
+source;share/cap_topicos/hook/pythonpath.sh
+source;share/cap_topicos/local_setup.bash
+source;share/cap_topicos/local_setup.dsv
+source;share/cap_topicos/local_setup.ps1
+source;share/cap_topicos/local_setup.sh
+source;share/cap_topicos/local_setup.zsh

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- CONFIGURATION VARIABLES -->
+  <let name="world_path" value="$(find-pkg-share cap_launch)/worlds/world_01.sdf"/>
+
+  <!-- EXECUTE GAZEBO -->
+  <executable 
+    cmd="gz sim $(var world_path)" 
+    cwd="/home" 
+    output = "screen" >
+  </executable>
+</launch>

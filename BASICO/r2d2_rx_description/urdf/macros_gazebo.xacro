@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<robot name="macros_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="mu1" value="0.1" />   <!-- 0.1, 0.0: No friction, no motion -->
+  <xacro:property name="mu2" value="0.1" />
+
+  <xacro:macro name="set_gazebo" params="prefix">
+    <!-- ***************** -->
+    <!--   SET BASE LINK   -->
+    <!-- ***************** -->
+    <gazebo reference="${prefix}base_link">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+
+
+    <!-- ********************************** -->
+    <!-- JOINT STATE PLUGIN -->
+    <!-- ********************************** -->
+    <gazebo>
+      <plugin filename="ignition-gazebo-joint-state-publisher-system"
+        name="ignition::gazebo::systems::JointStatePublisher">
+        <joint_name>${prefix}base_to_wheel1</joint_name>
+        <joint_name>${prefix}base_to_wheel2</joint_name>
+        <joint_name>${prefix}base_to_wheel3</joint_name>
+        <joint_name>${prefix}base_to_wheel4</joint_name>
+      </plugin>
+    </gazebo>
+    
+    <!-- ******************* -->
+    <!--  DIFF DRIVE PLUGIN  -->
+    <!-- ******************* -->
+    <gazebo>
+      <plugin filename="gz-sim-diff-drive-system"
+              name="gz::sim::systems::DiffDrive">
+        <left_joint>${prefix}base_to_wheel1</left_joint>
+        <left_joint>${prefix}base_to_wheel3</left_joint>
+        <right_joint>${prefix}base_to_wheel2</right_joint>
+        <right_joint>${prefix}base_to_wheel4</right_joint>
+        <wheel_separation>${xx + h}</wheel_separation>
+        <wheel_radius>${r}</wheel_radius>
+        <odom_publish_frequency>20</odom_publish_frequency>
+      </plugin>
+    </gazebo>
+
+    <!-- ******************* -->
+    <!--       LIDAR         -->
+    <!-- ******************* -->
+    <gazebo reference="${prefix}laser_link">
+      <sensor type="gpu_lidar" name="${prefix}laser_sensor">
+        <!-- <pose relative_to="${prefix}laser_link">0 0 0 0 0 0</pose> -->
+        <visualize>true</visualize>
+        <update_rate>10</update_rate>
+        <topic>${prefix}lidar</topic>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>50</samples>
+              <resolution>1</resolution>      <!-- Put 1 here -->
+              <min_angle>-1.570796</min_angle>   <!--  -90 deg -->
+              <max_angle>1.570796</max_angle>    <!--   90 deg -->
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.10</min>
+            <max>5.6</max>
+            <resolution>0.01</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <!-- Noise parameters based on published spec for Hokuyo laser
+            achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+            stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+            reading. -->
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </lidar>
+      </sensor>
+    </gazebo>
+
+    <!-- ********** -->
+    <!--    IMU     -->
+    <!-- ********** -->
+    <gazebo reference="${prefix}imu_link">
+      <sensor name="${prefix}imu_sensor" type="imu">
+        <always_on>1</always_on>
+        <update_rate>10</update_rate>
+        <visualize>true</visualize>
+        <topic>${prefix}imu</topic>
+      </sensor>
+      <material>Gazebo/Red</material>
+    </gazebo>
+
+    <!-- ********** -->
+    <!--    GPS    -->
+    <!-- ********** -->
+    <gazebo reference="${prefix}gps_link">
+      <sensor name="${prefix}gps_navsat" type="gps">   <!-- navsat -->
+        <always_on>1</always_on>
+        <update_rate>10</update_rate>
+         <gps>
+            <position_sensing>
+              <horizontal>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>0.000001</stddev>
+                </noise>
+              </horizontal>
+              <vertical>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>0.000001</stddev>
+                </noise>
+              </vertical>
+            </position_sensing>
+          </gps>
+          <plugin name="my_gps_plugin" filename="libgazebo_ros_gps_sensor.so">
+            <ros>
+              <remapping>~/out:=/gps/fix</remapping>
+            </ros>
+          </plugin>
+        <visualize>true</visualize>
+        <topic>${prefix}navsat</topic>
+
+      </sensor>
+      <material>Gazebo/Green</material>
+    </gazebo>
+
+    <!-- ************ -->
+    <!--    CAMERA    -->
+    <!-- ************ -->
+    <gazebo reference="${prefix}camera_link">
+      <sensor name="${prefix}camera" type="camera">
+        <always_on>1</always_on>
+        <update_rate>5</update_rate>
+        <visualize>true</visualize>
+        <topic>${prefix}camera</topic>
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>800</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+      </sensor>
+      <material>Gazebo/Black</material>
+    </gazebo>
+  </xacro:macro>
+</robot>

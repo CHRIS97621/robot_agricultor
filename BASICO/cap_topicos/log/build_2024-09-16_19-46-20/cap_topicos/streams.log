@@ -1,0 +1,82 @@
+[0.017s] Invoking command in '/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos
+[0.124s] -- The C compiler identification is GNU 13.2.0
+[0.226s] -- The CXX compiler identification is GNU 13.2.0
+[0.259s] -- Detecting C compiler ABI info
+[0.445s] -- Detecting C compiler ABI info - done
+[0.460s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.460s] -- Detecting C compile features
+[0.461s] -- Detecting C compile features - done
+[0.481s] -- Detecting CXX compiler ABI info
+[0.696s] -- Detecting CXX compiler ABI info - done
+[0.710s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.710s] -- Detecting CXX compile features
+[0.711s] -- Detecting CXX compile features - done
+[0.720s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.017s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.164s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.281s] -- Found rclcpp: 28.1.3 (/opt/ros/jazzy/share/rclcpp/cmake)
+[1.394s] -- Found rosidl_generator_c: 4.6.3 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.433s] -- Found rosidl_generator_cpp: 4.6.3 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[1.472s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.515s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.684s] -- Found rmw_implementation_cmake: 7.3.1 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.691s] -- Found rmw_fastrtps_cpp: 8.4.1 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.807s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.826s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.847s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.919s] -- Found rclpy: 7.1.1 (/opt/ros/jazzy/share/rclpy/cmake)
+[1.922s] -- Found example_interfaces: 0.12.0 (/opt/ros/jazzy/share/example_interfaces/cmake)
+[1.972s] -- Found geometry_msgs: 5.3.5 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[2.001s] -- Found sensor_msgs: 5.3.5 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[2.024s] -- Found nav_msgs: 5.3.5 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[2.046s] -- Found cap_msgs: 0.0.0 (/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/install/cap_msgs/share/cap_msgs/cmake)
+[2.246s] -- Configuring done (2.2s)
+[2.255s] -- Generating done (0.0s)
+[2.257s] -- Build files have been written to: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos
+[2.271s] Invoked command in '/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos
+[2.272s] Invoking command in '/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos -- -j16 -l16
+[2.340s] Built target ament_cmake_python_symlink_cap_topicos
+[2.510s] running egg_info
+[2.511s] creating cap_topicos.egg-info
+[2.527s] writing cap_topicos.egg-info/PKG-INFO
+[2.527s] writing dependency_links to cap_topicos.egg-info/dependency_links.txt
+[2.528s] writing top-level names to cap_topicos.egg-info/top_level.txt
+[2.528s] writing manifest file 'cap_topicos.egg-info/SOURCES.txt'
+[2.573s] reading manifest file 'cap_topicos.egg-info/SOURCES.txt'
+[2.573s] writing manifest file 'cap_topicos.egg-info/SOURCES.txt'
+[2.597s] Built target ament_cmake_python_build_cap_topicos_egg
+[2.609s] Invoked command in '/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos -- -j16 -l16
+[2.651s] Invoking command in '/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos
+[2.658s] -- Install configuration: ""
+[2.658s] -- Execute custom install script
+[2.659s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/share/cap_topicos/environment/pythonpath.sh
+[2.667s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/share/cap_topicos/environment/pythonpath.dsv
+[2.678s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/python3.12/site-packages/cap_topicos-0.0.0-py3.12.egg-info/PKG-INFO
+[2.687s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/python3.12/site-packages/cap_topicos-0.0.0-py3.12.egg-info/SOURCES.txt
+[2.696s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/python3.12/site-packages/cap_topicos-0.0.0-py3.12.egg-info/dependency_links.txt
+[2.705s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/python3.12/site-packages/cap_topicos-0.0.0-py3.12.egg-info/top_level.txt
+[2.716s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/python3.12/site-packages/cap_topicos/__init__.py
+[2.725s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/cap_topicos/publisher_array.py
+[2.733s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/cap_topicos/publisher_int.py
+[2.742s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/cap_topicos/publisher_string.py
+[2.751s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/cap_topicos/subscriber_array.py
+[2.760s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/cap_topicos/subscriber_int.py
+[2.769s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/cap_topicos/subscriber_odom.py
+[2.778s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/cap_topicos/subscriber_string.py
+[2.787s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/cap_topicos/teleop_qt.py
+[2.797s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/lib/cap_topicos/teleop.py
+[2.806s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/share/cap_topicos//launch/teleop.launch.py
+[2.816s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/share/cap_topicos//launch/teleop_odom.launch.py
+[2.826s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/share/cap_topicos//launch/teleop_qt.launch.py
+[2.836s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/share/cap_topicos//launch/topicos.launch.py
+[2.845s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/share/cap_topicos//launch/topicos2.launch.py
+[2.854s] -- Symlinking: /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/install/cap_topicos/share/cap_topicos//launch/topicos_array.launch.py
+[2.863s] [31mCMake Error at ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:100 (message):
+[2.863s]   ament_cmake_symlink_install_directory() can't find
+[2.863s]   '/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/config'
+[2.863s] Call Stack (most recent call first):
+[2.863s]   ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:329 (ament_cmake_symlink_install_directory)
+[2.863s]   cmake_install.cmake:46 (include)
+[2.863s] 
+[2.863s] [0m
+[2.865s] Invoked command in '/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos

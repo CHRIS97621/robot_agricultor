@@ -1,0 +1,4 @@
+source;share/cap_topicos/local_setup.bash
+source;share/cap_topicos/local_setup.dsv
+source;share/cap_topicos/local_setup.sh
+source;share/cap_topicos/local_setup.zsh

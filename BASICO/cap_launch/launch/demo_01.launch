@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Launch a turtlesim_node -->
+    <node
+        name = "turtle"
+        pkg  = "turtlesim"
+        exec = "turtlesim_node" >
+    </node>
+
+    <!-- Launch a turtle_teleop_key node -->
+    <node
+        name = "teleop"
+        pkg  = "turtlesim"
+        exec = "turtle_teleop_key" 
+        output = "screen"
+        launch-prefix = "xterm -e" >
+    </node>
+</launch>

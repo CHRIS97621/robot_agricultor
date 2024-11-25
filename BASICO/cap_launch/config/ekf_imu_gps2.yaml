@@ -1,0 +1,67 @@
+/ekf_imu_gps2:
+  ros__parameters:
+    frequency: 30.0  # Frecuencia de actualización del EKF en Hz
+    map_frame: map  # Fusiona los datos globales con elñ GPS
+    odom_frame: odom  # Frame de la odometría
+    base_link_frame: base_link  # Frame base del robot donde está montada la IMU
+    world_frame: map  # Frame global donde opera el GPS
+    publish_tf: true  # Publicar transformaciones tf
+
+    # Configuración del IMU
+    imu0: /imu/data
+    imu0_config: [false, false, false,   # X, Y, Z (posición)
+                  true, true, true,      # Roll, Pitch, Yaw (orientación)
+                  false, false, false,   # Velocidades angulares (X, Y, Z) - giroscopio
+                  true, true, true,      # Velocidades Roll, Pitch, Yaw
+                  true, true, true,      # Aceleraciones lineales (X, Y, Z) - acelerómetro
+                  false, false, false]   # Aceleraciones Roll, Pitch, Yaw
+    imu0_differential: true  # Utilizar la velocidad angular diferencial para reducir el drift
+    imu0_remove_gravitational_acceleration: true  # Eliminar la aceleración gravitacional
+
+    # Covarianza de la IMU
+    imu0_covariance: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   # Covarianza para Roll (orientación)
+                      0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   # Covarianza para Pitch (orientación)
+                      0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   # Covarianza para Yaw (orientación)
+                      0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0,    # Covarianza para la aceleración lineal X
+                      0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0,    # Covarianza para la aceleración lineal Y
+                      0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0,    # Covarianza para la aceleración lineal Z
+                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0,   # Covarianza para la velocidad angular Roll
+                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0,   # Covarianza para la velocidad angular Pitch
+                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1,]
+       
+     # 0.05, 0, 0, 0, 0, 0, 0, 0, 0,   # Covarianza para Roll (orientación)
+      #0, 0.05, 0, 0, 0, 0, 0, 0, 0,   # Covarianza para Pitch (orientación)
+      #0, 0, 0.05, 0, 0, 0, 0, 0, 0,   # Covarianza para Yaw (orientación)
+      #0, 0, 0, 0.1, 0, 0, 0, 0, 0,    # Covarianza para la aceleración lineal X
+      #0, 0, 0, 0, 0.1, 0, 0, 0, 0,    # Covarianza para la aceleración lineal Y
+      #0, 0, 0, 0, 0, 0.1, 0, 0, 0,    # Covarianza para la aceleración lineal Z
+      #0, 0, 0, 0, 0, 0, 0.01, 0, 0,   # Covarianza para la velocidad angular Roll
+      #0, 0, 0, 0, 0, 0, 0, 0.01, 0,   # Covarianza para la velocidad angular Pitch
+      #0, 0, 0, 0, 0, 0, 0, 0, 0.01]   # Covarianza para la velocidad angular Yaw
+    imu0_queue_size: 10  # Tamaño del buffer para los datos de IMU
+
+    # Configuración del GPS
+    gps0: /gps/fix  # Tópico del GPS
+    gps0_config: [true, true, true,      # X, Y, Z (posición)
+                  false, false, false,   # Roll, Pitch, Yaw
+                  false, false, false,   # Velocidades X, Y, Z
+                  false, false, false,   # Velocidades Roll, Pitch, Yaw
+                  false, false, false,   # Aceleraciones X, Y, Z
+                  false, false, false]   # Aceleraciones Roll, Pitch, Yaw
+    # Covarianza del GPS (X, Y, con alta incertidumbre en Z)
+    #gps0_covariance: [0.5, 0.0, 0.0,
+                      #0.0, 0.5, 0.0,
+                      #0.0, 0.0, 9999] # Muy alta incertidumbre en la altitud (Z)
+                    
+
+    gps0_queue_size: 10  # Tamaño del buffer para los datos de GPS
+
+    # Covarianza del ruido del proceso (modelo del robot)
+
+    process_noise_covariance: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0,
+                               0.0, 0.1, 0.0, 0.0, 0.0, 0.0,
+                               0.0, 0.0, 0.1, 0.0, 0.0, 0.0,
+                               0.0, 0.0, 0.0, 0.1, 0.0, 0.0,
+                               0.0, 0.0, 0.0, 0.0, 0.1, 0.0,
+                               0.0, 0.0, 0.0, 0.0, 0.0, 0.1]
+                              

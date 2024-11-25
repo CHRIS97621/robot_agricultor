@@ -1,0 +1,11 @@
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/uninstall.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/cap_topicos_uninstall.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/ament_cmake_python_symlink_cap_topicos.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/ament_cmake_python_build_cap_topicos_egg.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/test.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/edit_cache.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/rebuild_cache.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/list_install_components.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/install.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/install/local.dir
+/home/christopher/christopher/CHRISTOPHER/ROS2/ros2_ws/src/BASICO/cap_topicos/build/cap_topicos/CMakeFiles/install/strip.dir

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Include launcher -->
+  <include file = "$(find-pkg-share cap_launch)/launch/demo_01.launch" />
+  
+  <!-- Launch rqt_graph -->
+  <node
+    name = "rqt_graph"
+    pkg  = "rqt_graph"
+    exec = "rqt_graph" >
+  </node>
+</launch>

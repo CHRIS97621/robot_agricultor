@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+<world name="my_world">
+  <!-- ######################### -->
+  <!--   INITIAL CONFIGURATION   -->
+  <!-- ######################### -->
+  <physics name="1ms" type="ignored">
+    <max_step_size>0.001</max_step_size>
+    <real_time_factor>1.0</real_time_factor>
+  </physics>
+  <!-- Set physics engine -->
+  <!-- https://ignitionrobotics.org/api/gazebo/3.3/physics.html -->
+  <plugin
+    filename="libignition-gazebo-physics-system.so"
+    name="ignition::gazebo::systems::Physics">
+  </plugin>
+  <!-- Supports commands like spawning and teleporting entities -->
+  <plugin
+    filename="libignition-gazebo-user-commands-system.so"
+    name="ignition::gazebo::systems::UserCommands">
+  </plugin>
+  <!-- Broadcasts the server state to the GUI -->
+  <plugin
+    filename="libignition-gazebo-scene-broadcaster-system.so"
+    name="ignition::gazebo::systems::SceneBroadcaster">
+  </plugin>
+
+  <!-- ####################### -->
+  <!--   WORLD CONFIGURATION   -->
+  <!-- ####################### -->
+  <!--   Add models from https://app.ignitionrobotics.org/fuel/models -->
+  <!-- Set scene -->
+  <scene>
+    <ambient>1.0 1.0 1.0</ambient>
+    <background>0.8 0.8 0.8</background>
+  </scene>
+  <!-- Sun -->
+  <include>
+    <name>sun</name>
+    <uri>
+      https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Sun
+    </uri>
+  </include>
+  <!-- Ground -->
+  <include>
+    <name>ground</name>
+    <uri>
+      https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Ground Plane
+    </uri>
+  </include>
+  <!-- Sofa -->
+  <include>
+    <name>mi_sofa</name>
+    <uri>
+      https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sofa
+    </uri>
+  </include>
+</world>
+</sdf>
